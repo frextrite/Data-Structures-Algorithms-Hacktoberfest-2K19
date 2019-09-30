@@ -10,7 +10,7 @@ assignees: ''
 
 # Data Structure
 
-[ ] I have gone through the repository and made sure this data structure has not been implemented
+- [ ] I have gone through the repository and made sure this data structure has not been implemented
 
 ## Information about my new data structure
 
