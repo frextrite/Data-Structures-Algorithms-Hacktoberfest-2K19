@@ -27,7 +27,7 @@ As a part of Hacktoberfest 2019, you have a chance to contribute to this reposit
 ## Rules for contributing
 1. Follow the directory structure 
 ```Data Structures/<data structure>/<language>/<file>``` and ```Algorithms/<algorithm>/<language>/<file>```
-```Example: Data Structures/Linked List/cpp/linked_list.cpp``` and ```Algorithms/Binary Search/rust/binary_search.rs```
+```Example: Data Structures/Linked List/cpp/linked_list.cpp``` and ```Algorithms/Search/rust/binary_search.rs```
 2. Format/Indent the code properly
 3. Languages accepted: C, C++, Javascript, Java, Python, Rust (wish to code in another language? Update the README!)
 4. Language folder and file names should be lowercase.
