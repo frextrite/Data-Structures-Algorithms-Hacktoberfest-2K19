@@ -3,7 +3,7 @@ name: Data Structure
 about: Implementing a Data Structure? Tell us more about it here before working on
   it.
 title: "[DS]"
-labels: ''
+labels: Hacktoberfest
 assignees: ''
 
 ---

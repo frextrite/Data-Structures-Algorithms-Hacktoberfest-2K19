@@ -2,7 +2,7 @@
 name: Algorithm
 about: Implementing an algorithm? Tell us more about it here before working on it.
 title: "[Algo]"
-labels: ''
+labels: Hacktoberfest
 assignees: ''
 
 ---
