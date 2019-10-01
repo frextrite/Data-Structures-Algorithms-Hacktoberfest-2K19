@@ -4,7 +4,7 @@ int binarySearch(int arr[], int l, int r, int x) //Binary Search function to fin
 {
     if (r >= l) {
         int mid = l + (r - l) / 2; //selection of mid element
-        return (arr[mid]==x?mid:arr[mid]>x?binarySearch(arr, l, mid - 1, x):binarySearch(arr, mid + 1, r, x));
+        return (arr[mid]==x ? mid:arr[mid]>x ? binarySearch(arr, l, mid - 1, x) : binarySearch(arr, mid + 1, r, x));
     }
     return -1;
 }
