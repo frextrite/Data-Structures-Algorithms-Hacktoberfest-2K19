@@ -1,0 +1,65 @@
+class GFG 
+{ 
+  
+final static int MAX = 1000; 
+  
+
+static boolean[][] has = new boolean[MAX + 1][2]; 
+
+static boolean search(int X)  
+{ 
+    if (X >= 0)  
+    { 
+        if (has[X][0] == true)  
+        { 
+            return true; 
+        }  
+        else 
+        { 
+            return false; 
+        } 
+    } 
+  
+    // if X is negative take the  
+    // absolute value of X.  
+    X = Math.abs(X); 
+    if (has[X][1] == true)  
+    { 
+        return true; 
+    } 
+  
+    return false; 
+} 
+  
+static void insert(int a[], int n)  
+{ 
+    for (int i = 0; i < n; i++)  
+    { 
+        if (a[i] >= 0)  
+        { 
+            has[a[i]][0] = true; 
+        }  
+        else 
+        { 
+            has[Math.abs(a[i])][1] = true; 
+        } 
+    } 
+} 
+  
+
+public static void main(String args[])  
+{ 
+    int a[] = {-1, 9, -5, -8, -5, -2}; 
+    int n = a.length; 
+    insert(a, n); 
+    int X = -5; 
+    if (search(X) == true) 
+    { 
+        System.out.println("Present"); 
+    }  
+    else 
+    { 
+        System.out.println("Not Present"); 
+    } 
+} 
+} 
