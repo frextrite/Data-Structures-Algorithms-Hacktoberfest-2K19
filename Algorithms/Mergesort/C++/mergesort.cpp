@@ -1,50 +1,87 @@
-#include <iostream>
-#include <math.h>
-
+#include<bits/stdc++.h>
 using namespace std;
+int Merge(int A[],int p, int q,int r)     
+{
 
-//the copy function copies the source elements from the
-//index l to the index r, setting all in the destiny, from the k index;
-void copy(int destiny[],int k,int source[],int l, int r){
-    for(int i=l;i<=r;i++)
-        destiny[k++] = source[i];
-}
-
-//merge the b and c arrays and put on the a array based from the smallers of both b and c arrays
-void merge(int b[],int c[],int a[],int p, int q){
-    int i,j,k;
-    i=j=k=0;
-    while(i<p && j<q){
-        if(b[i] <= c[j]){
-            a[k] = b[i];
-            i++;
-        }
-        else{
-            a[k] = c[j];
-            j++;
-        }
-        k++;
+    int n1,n2,i,j,k; 
+    //size of left array=n1
+    //size of right array=n2       
+    n1=q-p+1;
+    n2=r-q;             
+    int L[n1],R[n2];
+    //initializing the value of Left part to L[]
+    for(i=0;i<n1;i++)
+    {
+        L[i]=A[p+i];
     }
-    if(i==p) copy(a,k,c,j,q-1);
-    else copy(a,k,b,i,p-1);
-}
-
-//keep calling the function resurivley until get just 1 element
-//copy 2 halves of the a array, and merge both using the mege function
-void mergesort(int a[], int n){
-    if(n > 1){
-        int b[n/2],c[n/2+1];
-        copy(b,0,a, 0, n/2-1);
-        copy(c,0,a, n/2, n-1);
-        mergesort(b,n/2);
-        mergesort(c,ceil(n/2.0));
-        merge(b,c,a,n/2,ceil(n/2.0));
+    //initializing the value of Right Part to R[]
+    for(j=0;j<n2;j++)
+    {
+        R[j]=A[q+j+1];
+    }
+    i=0,j=0;
+    //Comparing and merging them
+    //into new array in sorted order 
+    for(k=p;i<n1&&j<n2;k++)
+    {
+        if(L[i]<R[j])
+        {
+            A[k]=L[i++];
+        }
+        else
+        {
+            A[k]=R[j++];
+        }
+    }
+    //If Left Array L[] has more elements than Right Array R[]
+    //then it will put all the
+    // reamining elements of L[] into A[]
+    while(i<n1)             
+    {
+        A[k++]=L[i++];
+    }
+    //If Right Array R[] has more elements than Left Array L[]
+    //then it will put all the
+    // reamining elements of L[] into A[]
+    while(j<n2)
+    {
+        A[k++]=R[j++];
     }
 }
-
-//testing
-int main() {
-    int vet[9]={5,7,1,4,3,6,9,8,2};
-    mergesort(vet,9);
-    for(int i=0;i<9;i++) cout << vet[i] << " ";
+//This is Divide Part
+//This part will Divide the array into 
+//Sub array and then will Merge them
+//by calling Merge()
+int MergeSort(int A[],int p,int r)    
+{
+    int q;                                
+    if(p<r)
+    {
+        q=(p+r)/2;
+        MergeSort(A,p,q);
+        MergeSort(A,q+1,r);
+        Merge(A,p,q,r);
+    }
+}
+int main()
+{
+    int n;
+    cout<<"Enter size of the Array: ";
+    cin>>n;
+    int A[n],i;
+    cout<<"Enter array values:\n";
+    for(i=0;i<n;i++)
+    cin>>A[i];
+    //Calling the MergeSort()
+    //First we are passing the array
+    //the start index that is 0
+    //and the size of the array n
+    
+    MergeSort(A,0,n-1);
+    cout<<"The Sorted List is\n";
+    for(i=0;i<n;i++)
+    {
+        cout<<A[i]<<" ";
+    }
+    return 0;
 }
