@@ -1,0 +1,62 @@
+###Partition problem is to determine whether a given set can be partitioned into two subsets such that the sum of elements in both subsets is same.
+##good interview problem
+**HOW TO APPROACH THIS PROBLEM?**
+>It can be solved either using Dynamic Programming.
+***We can create a 2D array part[][] of size (sum/2)*(n+1). And we can construct the solution in bottom up manner such that every filled entry has following property***
+
+>part[i][j] = true if a subset of {arr[0], arr[1], ..arr[j-1]} has sum 
+             equal to i, otherwise false
+             
+ #include <bits/stdc++.h> 
+using namespace std; 
+  
+//return false if array cant be partioned  
+bool findPartiion (int arr[], int n)  
+{  
+    int sum = 0;  
+    int i, j;  
+      
+    // Caculcate sun of all elements  
+    for (i = 0; i < n; i++)  
+    sum += arr[i];  
+      
+    if (sum % 2 != 0)  
+    return false;  
+      
+    bool part[sum / 2 + 1][n + 1];  
+      
+    // initialize top row as true  
+    for (i = 0; i <= n; i++)  
+    part[0][i] = true;  
+          
+    // initialize leftmost column,  
+    // except part[0][0], as 0  
+    for (i = 1; i <= sum / 2; i++)  
+    part[i][0] = false;  
+      
+    // Fill the partition table in botton up manner  
+    for (i = 1; i <= sum / 2; i++)  
+    {  
+        for (j = 1; j <= n; j++)  
+        {  
+            part[i][j] = part[i][j - 1];  
+            if (i >= arr[j - 1])  
+            part[i][j] = part[i][j] ||  
+                         part[i - arr[j - 1]][j - 1];  
+        }      
+    }  
+      
+    return part[sum / 2][n];  
+}  
+ 
+int main()  
+{  
+    int arr[] = {3, 1, 1, 2, 2, 1};  
+    int n = sizeof(arr) / sizeof(arr[0]);  
+    if (findPartiion(arr, n) == true)  
+        cout << "Can be divided into two subsets of equal sum";  
+    else
+        cout << "Can not be divided into" 
+             << " two subsets of equal sum";  
+    return 0;  
+}              
