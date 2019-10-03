@@ -41,19 +41,45 @@ def bfs(startValue, targetValue, graphToSearch):
 		raise ValueError("The starting vertex is not in specified graph.")
 	
 	queue = [[startValue, [startValue]]]
+	visited = set([startValue])
 
 	while (len(queue) > 0):
 		currentValue,currentPath = queue.pop(0)
 		currentVertex = graphToSearch.vertices[currentValue]
 
 		for vertex in currentVertex.edges:
-			if vertex.value == targetValue:
-				return currentPath + [targetValue]
-			else:
-				queue.append([vertex.value, currentPath + [vertex.value]])
-
+			if vertex.value not in visited:
+				path = currentPath + [vertex.value]
+				if vertex.value == targetValue:
+					return path
+				else:
+					queue.append([vertex.value, path])
+					visited.add(vertex.value)
 
 	return None
+
+def test_bfs():
+	graph = Graph()
+	for i in range(1,6):
+		graph.addVertex(i)
+	graph.connectVertices(1,2)
+	graph.connectVertices(1,3)
+	graph.connectVertices(2,4)
+	graph.connectVertices(3,5)
+
+	test_case1 = bfs(1,5,graph)
+	test_case2 = bfs(1,6,graph)
+	print(test_case1)
+	print(test_case2)
+	if test_case1 != [1,3,5]:
+		return False
+	if test_case2:
+		return False
+	return True
+
+print(test_bfs())
+
+
 
 
 
