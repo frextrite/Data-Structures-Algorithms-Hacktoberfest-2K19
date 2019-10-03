@@ -11,18 +11,15 @@ struct btnode
 
 };
 
-btnode*root=NULL,*parent,*temp;
-
-
+struct btnode*root=NULL,*parent,*temp;
 
 
 #define count 10
 
-
 void insertion();
-void inorder(btnode*);
-void preorder(btnode*);
-void postorder(btnode*);
+void inorder(struct btnode*);
+void preorder(struct btnode*);
+void postorder(struct btnode*);
 
 
 
@@ -35,7 +32,7 @@ int main()
 	while(1)
 	{
 
-		printf(" CHOOSE FROM THE MENU\n 1.insertion \n 2.display \n  3.exit\n");
+		printf(" CHOOSE FROM THE MENU\n 1.insertion \n 2.inorder \n 3.preorder \n 4.postorder \n  5.exit\n");
 
 		scanf("%d",&ch);
 
@@ -47,12 +44,15 @@ int main()
 			  		break;
 
 			case 2: inorder(root);
+			        cout<<endl;
 			        break;
 
 			case 3: preorder(root);
+			        cout<<endl;
 			        break;
 
-			case 4: postorder(root);
+			case 4: postorder(root); 
+			        cout<<endl;
 			        break;
 
 			case 5: exit(0);
@@ -85,7 +85,7 @@ void insertion()
 	while(ch==1)
 	{
 
-		temp = (btnode*)malloc(sizeof(btnode));
+		temp = (struct btnode*)malloc(sizeof(struct btnode));
 
 		printf("enter the value of data ");
 		scanf("%d",&temp->data);
@@ -105,7 +105,7 @@ void insertion()
 
 		{
 				int county=0;
-			 btnode*curr;
+			struct  btnode*curr;
 
 			 curr=root;
 
@@ -128,9 +128,6 @@ void insertion()
 		                 {
 		                 	curr=curr->right;
 						 }
-
-
-
 
 
 		      }
@@ -159,35 +156,35 @@ void insertion()
 
 
 
-void inorder(btnode *root)
+void inorder(struct btnode *root)
 {
 
     if (root == NULL)
         return;
     inorder(root->left);
-    printf("%d",root>left);
+    printf("%d",root->data);
     inorder(root->right);
     
 }
 
-void preorder(btnode *root)
+void preorder(struct btnode *root)
 {
 
     if (root == NULL)
         return;
-    inorder(root->left);
-    printf("%d",root>left);
-    inorder(root->right);
+    printf("%d",root->data);
+    preorder(root->left);
+    preorder(root->right);
     
 }
-void postorder(btnode *root)
+void postorder(struct btnode *root)
 {
 
     if (root == NULL)
         return;
-    inorder(root->left);
-    printf("%d",root>left);
-    inorder(root->right);
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d",root->data);
     
 }
 
