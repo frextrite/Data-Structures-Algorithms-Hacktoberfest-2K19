@@ -11,7 +11,7 @@ struct btnode
 
 };
 
-btnode*root=NULL,*parent,*temp;
+struct btnode*root=NULL,*parent,*temp;
 
 
 
@@ -20,10 +20,8 @@ btnode*root=NULL,*parent,*temp;
 
 
 void insertion();
-void inorder(btnode*);
-void preorder(btnode*);
-void postorder(btnode*);
-
+void display(btnode*,int);
+void rootdisp(btnode*);
 
 
 int main()
@@ -46,16 +44,11 @@ int main()
 	 		case 1: insertion();
 			  		break;
 
-			case 2: inorder(root);
+			case 2: rootdisp(root);
 			        break;
 
-			case 3: preorder(root);
-			        break;
 
-			case 4: postorder(root);
-			        break;
-
-			case 5: exit(0);
+			case 3: exit(0);
 
 
 	  }
@@ -159,36 +152,32 @@ void insertion()
 
 
 
-void inorder(btnode *root)
+void display(btnode *root,int space)
 {
 
     if (root == NULL)
         return;
-    inorder(root->left);
-    printf("%d",root>left);
-    inorder(root->right);
-    
+
+
+    space += count;
+
+    display(root->right, space);
+
+
+    printf("\n");
+
+	for (int i =count; i < space ; i++)
+       printf(" ");
+
+    printf("%d \n", root->data);
+
+
+    display(root->left, space);
 }
 
-void preorder(btnode *root)
+
+void rootdisp(btnode *root)
 {
 
-    if (root == NULL)
-        return;
-    inorder(root->left);
-    printf("%d",root>left);
-    inorder(root->right);
-    
+   display(root, 0);
 }
-void postorder(btnode *root)
-{
-
-    if (root == NULL)
-        return;
-    inorder(root->left);
-    printf("%d",root>left);
-    inorder(root->right);
-    
-}
-
-
