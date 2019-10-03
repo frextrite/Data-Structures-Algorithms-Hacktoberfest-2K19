@@ -1,17 +1,16 @@
-#Bubble sort for an that is given.
+def sortFun(arr):
+    n=len(arr)
+    for i in range(1,n):
+        for j in range(n - i):
+            if arr[j] > arr[j + 1]:
+                arr[j] = arr[j] + arr[j + 1]
+                arr[j + 1] = arr[j] - arr[j + 1]
+                arr[j] = arr[j] - arr[j + 1]
 
-def bubbleSort(A): 
-    n = len(A) 
-  
-    for i in range(n): 
-        for j in range(0, n-i-1): 
-            if A[j] > A[j+1] : 
-                A[i], A[j+1] = A[j+1], A[j] 
-  
-A = [9, 7, 1, 5, 12, 99, 21, 22, 101] 
-  
-bubbleSort(A) 
-  
-print ("Sorted array: ") 
-for i in range(len(A)): 
-    print ("%d" %A[i]),  
+print('Enter space-seperated intgers:',end=' ')
+arr = list(map(int,input().split()))
+print('Array read:',end=' ')
+print(arr)
+sortFun(arr)
+print('After sort array:',end=' ')
+print(arr)
