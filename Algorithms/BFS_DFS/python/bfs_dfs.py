@@ -36,6 +36,7 @@ class Graph:
 		return self.vertices.keys()
 
 
+#Breadth first search for Graph
 def bfs(startValue, targetValue, graphToSearch):
 	if (startValue not in graphToSearch.vertices):
 		raise ValueError("The starting vertex is not in specified graph.")
@@ -58,7 +59,31 @@ def bfs(startValue, targetValue, graphToSearch):
 
 	return None
 
-def test_bfs():
+#Depth first search for Graph
+def dfs(startValue, targetValue, graphToSearch):
+	if (startValue not in graphToSearch.vertices):
+		raise ValueError("The starting vertex is not in specified graph.")
+	
+	stack = [[startValue, [startValue]]]
+	visited = set([startValue])
+
+	while (len(stack) > 0):
+		currentValue,currentPath = stack.pop()
+		currentVertex = graphToSearch.vertices[currentValue]
+
+		for vertex in currentVertex.edges:
+			if vertex.value not in visited:
+				path = currentPath + [vertex.value]
+				if vertex.value == targetValue:
+					return path
+				else:
+					stack.append([vertex.value, path])
+					visited.add(vertex.value)
+
+	return None
+
+#Testing both search functions
+def test_bfs_dfs():
 	graph = Graph()
 	for i in range(1,6):
 		graph.addVertex(i)
@@ -68,16 +93,20 @@ def test_bfs():
 	graph.connectVertices(3,5)
 
 	test_case1 = bfs(1,5,graph)
-	test_case2 = bfs(1,6,graph)
-	print(test_case1)
-	print(test_case2)
+	test_case2 = dfs(1,5,graph)
+	test_case3 = bfs(1,6,graph)
+	test_case4 = dfs(1,6,graph)
 	if test_case1 != [1,3,5]:
 		return False
-	if test_case2:
+	if test_case2 != [1,3,5]:
+		return False
+	if test_case3:
+		return False
+	if test_case4:
 		return False
 	return True
 
-print(test_bfs())
+print(test_bfs_dfs())
 
 
 
