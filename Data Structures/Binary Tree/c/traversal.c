@@ -14,14 +14,13 @@ struct btnode
 struct btnode*root=NULL,*parent,*temp;
 
 
-
-
 #define count 10
 
-
 void insertion();
-void display(btnode*,int);
-void rootdisp(btnode*);
+void inorder(struct btnode*);
+void preorder(struct btnode*);
+void postorder(struct btnode*);
+
 
 
 int main()
@@ -33,7 +32,7 @@ int main()
 	while(1)
 	{
 
-		printf(" CHOOSE FROM THE MENU\n 1.insertion \n 2.display \n  3.exit\n");
+		printf(" CHOOSE FROM THE MENU\n 1.insertion \n 2.inorder \n 3.preorder \n 4.postorder \n  5.exit\n");
 
 		scanf("%d",&ch);
 
@@ -44,11 +43,19 @@ int main()
 	 		case 1: insertion();
 			  		break;
 
-			case 2: rootdisp(root);
+			case 2: inorder(root);
+			        cout<<endl;
 			        break;
 
+			case 3: preorder(root);
+			        cout<<endl;
+			        break;
 
-			case 3: exit(0);
+			case 4: postorder(root); 
+			        cout<<endl;
+			        break;
+
+			case 5: exit(0);
 
 
 	  }
@@ -78,7 +85,7 @@ void insertion()
 	while(ch==1)
 	{
 
-		temp = (btnode*)malloc(sizeof(btnode));
+		temp = (struct btnode*)malloc(sizeof(struct btnode));
 
 		printf("enter the value of data ");
 		scanf("%d",&temp->data);
@@ -98,7 +105,7 @@ void insertion()
 
 		{
 				int county=0;
-			 btnode*curr;
+			struct  btnode*curr;
 
 			 curr=root;
 
@@ -121,9 +128,6 @@ void insertion()
 		                 {
 		                 	curr=curr->right;
 						 }
-
-
-
 
 
 		      }
@@ -152,32 +156,36 @@ void insertion()
 
 
 
-void display(btnode *root,int space)
+void inorder(struct btnode *root)
 {
 
     if (root == NULL)
         return;
-
-
-    space += count;
-
-    display(root->right, space);
-
-
-    printf("\n");
-
-	for (int i =count; i < space ; i++)
-       printf(" ");
-
-    printf("%d \n", root->data);
-
-
-    display(root->left, space);
+    inorder(root->left);
+    printf("%d",root->data);
+    inorder(root->right);
+    
 }
 
-
-void rootdisp(btnode *root)
+void preorder(struct btnode *root)
 {
 
-   display(root, 0);
+    if (root == NULL)
+        return;
+    printf("%d",root->data);
+    preorder(root->left);
+    preorder(root->right);
+    
 }
+void postorder(struct btnode *root)
+{
+
+    if (root == NULL)
+        return;
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d",root->data);
+    
+}
+
+
