@@ -3,7 +3,7 @@ implementation of counting sort
  in this sorting we have restriction  on maximum value of array
 */
 
-#include<bits/stdc++.h>
+#include<iostreams>
 using namespace std;
 int main()
 {
