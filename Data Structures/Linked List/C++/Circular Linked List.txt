@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node *next;
+    node(int data){
+        this->data=data;
+    }
+};
+void printlist(node*head){
+    node*temp=head;
+    while(temp->next!=head)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+    cout<<temp->data<<"end";
+}
+void push(node *&head,int data)
+{
+    node*ptr1=new node(data);
+    node *temp=head; //traverse
+    ptr1->next=head;
+    if(head!=NULL){
+        while(temp->next!=head){
+            temp=temp->next;
+        }
+        temp->next=ptr1;
+    } 
+    else { //if no ele is presnt
+        ptr1->next=ptr1; //self-circle
+    }
+        head=ptr1;
+}
+node* getnode(node* &head,int data){
+node* temp=head;
+while(temp->next!=head){
+    if(temp->data==data) return temp;
+    temp=temp->next;
+}
+if(temp->data==data) return temp; //checking last node tail one
+else return NULL;
+}
+
+void deletenode(node*&head,int data){
+    node *del =getnode(head,data);
+    if(del==NULL){cout<<"node not pre";
+    return;}
+
+    if(head==del){
+        head=del->next;
+    }
+    node *temp=head;
+    while(temp->next!=del){
+        temp=temp->next;
+    }
+    temp->next=del->next;
+    delete del;
+}
+
+
+int main() {
+    
+    node* head=NULL;
+    push(head,2);
+    push(head,3);
+    push(head,5);
+    printlist(head);
+    cout<<endl;
+    deletenode(head,3);
+    printlist(head);
+    return 0;
+}
