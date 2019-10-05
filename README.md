@@ -14,15 +14,21 @@ As a part of Hacktoberfest 2019, you have a chance to contribute to this reposit
 5. You're done!
 
 ## Steps for contributing
-1. Fork the repository
-2. Clone the forked repository ```git clone https://github.com/<username>/Data-Structures-Algorithms-Hacktoberfest-2K19.git```
-3. Create a new branch for working ```git branch branch_name``` and switch to the branch ```git checkout branch_name```
-4. Code!
-5. Save your changes ```git add .```
-6. Commit your code ```git commit -m "Single line description of what you did"```
-7. Push your code ```git push origin branch_name```
-8. Create a pull request
-9. Wait for it to get merged!
+1. Decide with Algorithm/Data structure you want to work on that has not already been implemented
+2. Create an issue for it and wait for the maintainers to assign it to you
+3. Fork the repository
+4. Clone the forked repository ```git clone https://github.com/<username>/Data-Structures-Algorithms-Hacktoberfest-2K19.git```
+5. Create a new branch for working ```git branch branch_name``` and switch to the branch ```git checkout branch_name```
+6. Code!
+7. Save your changes ```git add .```
+8. Commit your code ```git commit -m "Single line description of what you did"```
+9. Push your code ```git push origin branch_name```
+10. Create a pull request. Mention which Algorithm/Data structure is implemented along with which issue it closes. Example
+```
+Implemented Floyd Warshall algorithm in Rust
+Closes #2
+```
+11. Wait for it to get merged!
 
 ## Rules for contributing
 1. Follow the directory structure 
@@ -33,3 +39,5 @@ Example: ```Data Structures/Linked List/cpp/linked_list.cpp``` and ```Algorithms
 4. Language folder and file names should be lowercase.
 5. Documented code is preferred (don't forget the space and time complexity of your code!)
 6. Only 1 Data Structure/Algorithm per issue/pull request
+7. Every PR should mention which issue it closes
+8. PRs without issues/Spam PRs will be marked as `invalid` as it is against Hacktoberfest code of conduct.
