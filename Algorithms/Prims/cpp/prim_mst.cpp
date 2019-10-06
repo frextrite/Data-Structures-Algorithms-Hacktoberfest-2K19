@@ -10,7 +10,7 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 
-int v,e;   //v represents number of vertices  
+int v,e;   //v represents number of vertices 
            // e represents number of edges
 
 
