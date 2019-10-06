@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 void printNGE(int arr[], int n) {
   stack < int > s;
-
 
   s.push(arr[0]);
 
