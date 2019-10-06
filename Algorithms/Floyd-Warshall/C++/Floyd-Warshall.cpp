@@ -1,3 +1,6 @@
+Time Complexity: O(n^3)
+Space Complexity: O(n^2)
+
 #include <bits/stdc++.h>
 using namespace std;
 int main()
