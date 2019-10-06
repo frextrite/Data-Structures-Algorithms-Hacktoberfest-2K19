@@ -1,0 +1,272 @@
+//operations on linked list 
+
+#include<conio.h>
+#include<stdio.h>
+#include<alloc.h>
+struct node
+{
+	int data;
+	struct node *link;
+} *head,*p,*x,*s,*prev,*p2,*h2;
+int d,n,i;
+void display()
+{
+	p=head->link;
+	while(p!= NULL)
+	{
+		printf("\n %d",p->data);
+		p=p->link;
+	}
+}
+
+void i_beg()
+{
+	x=(struct node*)malloc(sizeof(struct node));
+	printf("data: ");
+	scanf("%d",&d);
+	x->data=d;
+	x->link=head->link;
+	head->link=x;
+	p=head->link;
+	while(p!= NULL)
+	{
+		printf("\n %d",p->data);
+		p=p->link;
+	}
+}
+
+void i_end()
+{
+	x=(struct node*)malloc(sizeof(struct node));
+	printf("data: ");
+	scanf("%d",&d);
+	x->data=d;
+	p=head->link;
+	while(p->link!=NULL)
+	{
+		p=p->link;
+	}
+	x->link=p->link;
+	p->link=x;
+	p=x;
+	display();
+
+}
+void del_beg()
+{
+	p=head->link;
+	head->link=p->link;
+	free(p);
+	p=head->link;
+	while(p!= NULL)
+	{
+		printf("\n %d",p->data);
+		p=p->link;
+	}
+
+}
+void del_end()
+{
+
+	p=head->link;
+	while(p->link!=NULL)
+	{
+		s=p;
+		p=p->link;
+	}
+	s->link=NULL;
+	free(p);
+	p=head->link;
+	while(p!= NULL)
+	{
+		printf("\n %d",p->data);
+		p=p->link;
+	}
+
+}
+void i_sp()
+{
+	printf("position:");
+	scanf("%d",&n);
+	printf("data:");
+	scanf("%d",&d);
+	x=(struct node*)malloc(sizeof(struct node));
+	p=head->link;
+	for(i=1;i<n;i++)
+	{
+		prev=p;
+		p=p->link;
+	}
+	x->data=d;
+	x->link=p;
+	prev->link=x;
+	display();
+
+}
+void del_sp()
+{
+
+	printf("position:");
+	scanf("%d",&n);
+	p=head->link;
+	for(i=1;i<n;i++)
+	{
+		prev=p;
+		p=p->link;
+	}
+	prev->link=p->link;
+	free(p);
+	display();
+
+}
+void search()
+{
+	int item,flag=0,i=0;
+	printf("Enter element to be searched:");
+	scanf("%d",&item);
+	p=head->link;
+	while(p!=NULL)
+	{       i=i+1;
+		if(p->data==item)
+		{
+			flag=1;
+			break;
+		}
+		p=p->link;
+	}
+	if(flag==0)
+		printf("Element not found");
+	else
+		printf("Element found at positon %d",i);
+}
+void merge()
+
+{       char c;
+	h2=(struct node*)malloc(sizeof(struct node));
+	h2->link=NULL;
+	p2=h2;
+
+	do
+	{
+		printf("data: ");
+		scanf("%d",&d);
+		x=(struct node*)malloc(sizeof(struct node));
+		x->data=d;
+		x->link=p2->link;
+		p2->link=x;
+		p2=x;
+		printf("\ncontinue?");
+		scanf(" %c",&c);
+	}while(c!='n');
+	display();
+	p=head->link;
+	while(p->link!=NULL)
+	{
+		p=p->link;
+	}
+	p->link=h2->link;
+	printf("on merging");
+	display();
+
+}
+
+
+void copy()
+{
+
+}
+
+
+
+
+
+
+void main()
+{
+	int c1,c2,d;
+	char choice,c;
+	clrscr();
+	head=(struct node*)malloc(sizeof(struct node));
+	head->link=NULL;
+	p=head;
+
+	do
+	{
+		printf("data: ");
+		scanf("%d",&d);
+		x=(struct node*)malloc(sizeof(struct node));
+		x->data=d;
+		x->link=p->link;
+		p->link=x;
+		p=x;
+		printf("continue?");
+		scanf(" %c",&c);
+	}while(c!='n');
+	display();
+
+	do
+	{
+		printf("\n1.insertion 2.del 3.copy 4.search elm 5.merge");
+		scanf("%d",&c1);
+		switch(c1)
+		{
+			case 1:
+				printf("1.insertion at beg 2.at end 3. at specified position");
+				scanf("%d",&c2);
+				switch(c2)
+				{
+					case 1:
+						i_beg();
+						break;
+					case 2:
+						i_end();
+						break;
+					case 3:
+						i_sp();
+						break;
+					default: printf("invalid");
+						break;
+				}
+				break;
+			case 2:
+				printf("deletion from beg 2.from end 3. from specified positon");
+				scanf("%d",&c2);
+				switch(c2)
+				{
+					case 1:
+						del_beg();
+						break;
+					case 2:
+						del_end();
+						break;
+					case 3:
+						del_sp();
+						break;
+					default: printf("invalid");
+						break;
+				}
+				break;
+			case 3:
+				copy();
+				break;
+			case 4:
+				search();
+				break;
+			case 5:
+				merge();
+				break;
+			default: printf("invalid");
+				break;
+
+		 }
+		 printf("continue?");
+		 scanf(" %c",&choice);
+	}while(choice!='n');
+
+		 getch();
+}
+
+
+
+
+
