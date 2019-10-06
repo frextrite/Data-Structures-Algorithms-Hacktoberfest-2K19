@@ -18,6 +18,6 @@ function quick_sort($array){
 }
  
 $array = array(4, 3, 0, 8, -1, 5, 1);
-echo 'Original array : '.implode(',',$array).'\n';
+echo 'Original array : '.implode(',',$array);
 $sorted_array = quick_sort($array);
 echo 'Sorted array : '.implode(',',$sorted_array);
