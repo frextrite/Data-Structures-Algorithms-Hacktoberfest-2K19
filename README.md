@@ -1,6 +1,6 @@
 # Data Structures and Algorithms (Hacktoberfest 2019)
 
-_Update (October 8, 2019): Thank you everyone for your contributions. Due to Hacktoberfest's policy pull requests created in this repository won't count against Hacktoberfest PR count. However we would like to continue this project and everyone is welcome to create this a big collection of Algorithms and Data structures._ :tada:
+_Update (October 8, 2019): Thank you everyone for your contributions. Due to Hacktoberfest's policy pull requests created in this repository **will not** count against Hacktoberfest PR count. However we would like to continue this project and everyone is welcome to create this a big collection of Algorithms and Data structures._ :tada:
 
 ![Hacktoberfest 2019](https://hacktoberfest.digitalocean.com/assets/HF19_social-744d976f227e4aff6866443abcede8c651b309ec9c7c9f7410f5944f8e1299b9.png)
 
