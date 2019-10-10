@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset = "utf-8">
+    <title> Quotes! </title>
+    
+    <script>
+function getQuote() {
+quotes = new  Array(4);
+sources = new Array(4);
+quotes[0] = "Give a man a program, frustrate him for a day. Teach a man to program, frustrate him for a lifetime";
+sources[0] = "Muhammad Waseem";
+
+quotes[1] = "What kind of programmer is so divorced from reality that she thinks she'll get complex software right the first time?";
+sources[1] = "James Alan Gardner";
+
+quotes[2] = "What's in your hands I think and hope is intelligence: the ability to see the machine as more than when you were first led up" +
+"to it that you can make it more.";
+sources[2] = "Alan J. Perlis";
+
+quotes[3] = "I'm a programmer. I like programming. And the best way I've found to have a positive impact on code is to write it.";
+sources[3] = "Robert C. Martin";
+
+i = Math.floor(Math.random() * quotes.length);
+
+document.write("<p style = 'background-color: orange' >\"");
+document.write(quotes[i] + "\"");
+document.write("<em>- " + sources[i] + "</em>");
+document.write("</p>");
+}
+</script>
+
+<meta name = "viewport"
+content = "width=device-width, initial-scale=1">
+</head>
+
+    <body>
+    <h1> Quotes! </h1>
+    <p> This is a page of random quotes, to fetch a new quote simply reload this page. Enjoy! </p>
+    <script>
+    getQuote();
+</script>
+</body>
+</html>
