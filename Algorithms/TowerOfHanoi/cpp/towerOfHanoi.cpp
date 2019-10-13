@@ -84,13 +84,11 @@ void solve(stack<int> &initial, stack<int> &final, stack<int> &auxiliary, int n)
     {
         final.push(initial.top());
         initial.pop();
-
         print_towers();
         return;
     }
 
     print_towers();
-    
     solve(initial, auxiliary, final, n - 1);
     solve(initial, final, auxiliary, 1);
     solve(auxiliary, final, initial, n - 1);
