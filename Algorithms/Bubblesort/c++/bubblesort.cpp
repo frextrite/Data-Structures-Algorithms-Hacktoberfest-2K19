@@ -12,9 +12,9 @@ int main()
 	for(i=0;i<n;++i)
 		cin>>a[i];
 		
-	for(i=1;i<n;++i)
+	for(i=0;i<n-1;i++)
 	{
-		for(j=0;j<(n-i);++j)
+		for(j=0;j<(n-i-1);j++)
 			if(a[j]>a[j+1])
 			{
 				temp=a[j];
