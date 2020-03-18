@@ -34,7 +34,7 @@ void dequeue(node** z) //deletion function
 {
     if((*z)==NULL)
     {
-        cout<<"queue is empty"<<endl;
+        cout<<"queue is now empty"<<endl;
         return;
     }
     node* temp=*z;
@@ -60,9 +60,9 @@ void print_queue(node** z)// print function
 int main()
 {
     node* z = NULL;
-        enqueue(&z,11);
+        enqueue(&z,12);
         enqueue(&z,10);
-        enqueue(&z,13);
+        enqueue(&z,15);
         print_queue(&z);
         dequeue(&z);S
         print_queue(&z);
