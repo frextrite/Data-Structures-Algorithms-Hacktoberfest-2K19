@@ -1,56 +1,55 @@
-import java.util.ArrayList;
+public class mergesort{
 
-public static class MergeSort {
-    
-	public static ArrayList<Integer> mergeSort(ArrayList<Integer> a) {
-		int mid = (a.size() - 1) / 2;
-		ArrayList<Integer> half1;
-		ArrayList<Integer> half2;
-		if (a.size() == 1 || a.size() == 0) {
-			return a;
-		} else {
-
-			half1 = new ArrayList<Integer>(a.subList(0, mid));
-			half2 = new ArrayList<Integer>(a.subList(mid, a.size() - 1));
-
-			return merge(mergeSort(half1), mergeSort(half2));
-		}
-	}
-    
-    @SuppressWarnings("unchecked")
-	public static ArrayList<Integer> merge(ArrayList<Integer> listA, ArrayList<Integer> listB){
-		ArrayList<Integer> merged = new ArrayList<Integer>();
-		ArrayList<Integer> list1 = (ArrayList<Integer>) listA.clone();
-		ArrayList<Integer> list2 = (ArrayList<Integer>) listB.clone();
-		while(list1.size() > 0 && list2.size() > 0) {
-			if(list1.get(0) > list2.get(0)) {
-				merged.add(list2.get(0));
-				list2.remove(0);
-			} else if(list2.get(0) > list1.get(0)) {
-				merged.add(list1.get(0));
-				list1.remove(0);
-			} else {
-				merged.add(list1.get(0));
-				merged.add(list2.get(0));
-				list1.remove(0);
-				list2.remove(0);
-			}
-		}
-		
-		if(list1.size() == 0) {
-			for(Integer e : list2) {
-				merged.add(e);
-			}
-		} else if (list2.size() == 0) {
-			for(Integer e : list1) {
-				merged.add(e);
-			}
-		}
-		
-		
-		
-		return merged;
-		
-	}
-    
+    private int[] sort(int[] array, int front, int half, int back){
+        int arr[] = array;
+        int sub1[] = new int[half-front+1];
+        int sub2[] = new int[back-half];        
+        int s1ind, s2ind, ogind;
+        for(s1ind = 0; s1ind < sub1.length; s1ind++)
+            sub1[s1ind] = arr[front+s1ind];
+        for(s2ind = 0; s2ind < sub2.length; s2ind++)
+            sub2[s2ind] = arr[half+s2ind+1];
+        s1ind = s2ind = 0;
+        ogind = front;
+        while(s1ind < sub1.length && s2ind < sub2.length){
+            if(sub1[s1ind] < sub2[s2ind])
+                arr[ogind] = sub1[s1ind++];
+            else
+                arr[ogind] = sub2[s2ind++];
+            ogind++;
+        }
+        while(s1ind < sub1.length)
+            arr[ogind++] = sub1[s1ind++];
+        while(s2ind < sub2.length)
+            arr[ogind++] = sub2[s2ind++];
+        return arr;
+    }
+    private void mergesort(int[] arr, int front, int back){
+        if(front < back){
+            int half = (front+(back-1))/2;
+            mergesort(arr, front, half);
+            mergesort(arr, half+1, back);
+            arr = sort(arr, front, half, back);
+        }
+    }
+    private void mergesort(int[] arr){
+        mergesort(arr, 0, arr.length-1);
+    }
+    private void printVals(int[] arr){
+        for(int x = 0; x < arr.length; x++){
+            System.out.print(arr[x]);
+            if(x != arr.length-1) System.out.print(", ");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args){
+        int[] vet={5,7,1,4,3,6,9,8,2};
+        /*By standard procedure, an object should be capitalized.
+	* However by the rules of this repository, this file (and therefore
+	* this object) must be lowercase.
+	*/
+        mergesort m = new mergesort();
+        m.mergesort(vet);
+        m.printVals(vet);
+    }
 }

@@ -1,27 +1,18 @@
-import java.util.*
-fun bubbleSort(arr:IntArray){
-    for(i in 0 until arr.size-1){
-        for(j in 0 until arr.size-i-1){
-            if(arr[j]>arr[j+1]){
-                var temp = arr[j]
-                arr[j] = arr[j+1]
-                arr[j+1] = temp
+class DummyBubbleSort {
+
+    private fun sortArray(numbers: Array<Int>) {
+        for (currentPosition in 0 until (numbers.size - 1)) {
+            if (numbers[currentPosition] > numbers[currentPosition + 1]) {
+                val tmp = numbers[currentPosition]
+                numbers[currentPosition] = numbers[currentPosition + 1]
+                numbers[currentPosition + 1] = tmp
             }
-		}
+        }
     }
-}
-fun main(args:Array<String>) {
-    var scanner = Scanner(System.`in`)
-    print("enter the size to be sorted ")
-    var sizeOfList = scanner.nextInt()
-    val array = IntArray(sizeOfList)
-    print("start entering values to be sorted ")
-    for (i in 0 until sizeOfList) {
-        array[i] = scanner.nextInt();
-    }
-    bubbleSort(array)
-    for (i in 0 until sizeOfList){
-        print(array[i])
-        print(" ")
+
+    fun main(args: Array<String>) {
+        val numbers = arrayOf(69, 42, 666, 1, 969, 23, 6, 2, 0, 87)
+        sortArray(numbers)
+        numbers.forEach(::print)
     }
 }
